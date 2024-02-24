@@ -18,3 +18,9 @@ img {
     max-width: 1080px;
     margin: auto;
 }
+
+.link-box a {
+    text-decoration: none;
+    color: black;
+    margin-left: 20px;
+}

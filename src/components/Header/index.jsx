@@ -8,6 +8,8 @@ import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';
 import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
+import LoginIcon from '@mui/icons-material/Login';
+import CreateIcon from '@mui/icons-material/Create';
 import './style.css';
 
 const Header = ({ onLogout, id, login, isLogged }) => {
@@ -50,7 +52,19 @@ const Header = ({ onLogout, id, login, isLogged }) => {
                     </div>)
                     : (<div className='header'>
                         <div className='head-box'>
-                        <img src={logo} alt='logo' />
+                        <Link to={'/'}>
+                            <img src={logo} alt='logo' />
+                            </Link>
+                            <div className='link-box'>
+                                <Link to={'/login'}>
+                                    Log in
+                                    <LoginIcon />
+                                </Link>
+                                <Link to={'/register'}>
+                                    Register
+                                    <CreateIcon />
+                                </Link>
+                            </div>
                         </div>
                     </div>)
             }
