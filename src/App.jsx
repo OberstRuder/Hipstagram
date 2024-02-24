@@ -1,15 +1,11 @@
 import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import MainPage from './pages/MainPage';
-import UserPage from './pages/UserPage';
+import { BrowserRouter} from 'react-router-dom';
+import { CRouting } from './components/routing';
 
 function App() {
   return (
     <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<MainPage />} />
-      <Route path="/:id" element={<UserPage />} />
-    </Routes>
+    <CRouting/>
     </BrowserRouter>
   );
 }
