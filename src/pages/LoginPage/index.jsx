@@ -41,37 +41,39 @@ const LoginPage = ({ onLogin, isLogged, promise, myId }) => {
     }, [isLogged, navigate, promise])
 
     return (
-        <div className='login-box'>
-            <h3>Log in</h3>
-            <TextField
-                variant="standard"
-                label="Username"
-                value={login}
-                onChange={(e) => setLogin(e.target.value)} />
-            <TextField
-                style={{ position: 'relative' }}
-                variant="standard"
-                label="Password"
-                type={showPass ? 'text' : 'password'}
-                onChange={(e) => setPassword(e.target.value)}>
-            </TextField>
-            <IconButton className='showBtn'
-                aria-label="toggle password visibility"
-                onClick={() => setShowPass(!showPass)}>
-                {showPass ? <VisibilityOff /> : <Visibility />}
-            </IconButton>
-            <div style={{ marginTop: '15px' }}>
-                {<p style={{ color: 'red', fontSize: '16px' }}>{errorMessage}</p>}
-                <button
-                    className='primeBtn'
-                    onClick={() => onLogin(login, password)}>
-                    <Link to={'/login'}>Log in</Link>
-                </button>
-                <p>Don't have an account? <br />
-                    <button className='ordinaryBtn'>
-                        <Link to='/registration'>Register quickly</Link>
+        <div className='login-cont'>
+            <div className='login-box'>
+                <h3>Log in</h3>
+                <TextField
+                    variant="standard"
+                    label="Username"
+                    value={login}
+                    onChange={(e) => setLogin(e.target.value)} />
+                <TextField
+                    style={{ position: 'relative' }}
+                    variant="standard"
+                    label="Password"
+                    type={showPass ? 'text' : 'password'}
+                    onChange={(e) => setPassword(e.target.value)}>
+                </TextField>
+                <IconButton className='showBtn' style={{ marginLeft: 'auto' }}
+                    aria-label="toggle password visibility"
+                    onClick={() => setShowPass(!showPass)}>
+                    {showPass ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+                <div>
+                    {<p style={{ color: 'red', fontSize: '16px', position: 'relative', bottom: '30px' }}>{errorMessage}</p>}
+                    <button
+                        className='primeBtn'
+                        onClick={() => onLogin(login, password)}>
+                        <Link to={'/login'}>Log in</Link>
                     </button>
-                </p>
+                    <p>Don't have an account? <br />
+                        <button className='ordinaryBtn'>
+                            <Link to='/registration'>Register quickly</Link>
+                        </button>
+                    </p>
+                </div>
             </div>
         </div>
     );
