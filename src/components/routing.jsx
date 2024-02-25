@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import MainPage from "../pages/MainPage";
 import UserPage from "../pages/UserPage";
 import { CLoginPage } from "../pages/LoginPage";
+import { CRegistrationPage } from "../pages/RegistrationPage";
 
 const Routing = ({isLogged}) => {
 
@@ -22,7 +23,7 @@ const Routing = ({isLogged}) => {
                 <Routes>
                         <Route path="/" element={<CLoginPage />} />
                         <Route path="/login" element={<CLoginPage />} />
-                        <Route path="/register" element={<CLoginPage />} />
+                        <Route path="/register" element={<CRegistrationPage />} />
                 </Routes>
             </div>
         }

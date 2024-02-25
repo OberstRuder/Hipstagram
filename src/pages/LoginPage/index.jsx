@@ -70,7 +70,7 @@ const LoginPage = ({ onLogin, isLogged, promise, myId }) => {
                     </button>
                     <p>Don't have an account? <br />
                         <button className='ordinaryBtn'>
-                            <Link to='/registration'>Register quickly</Link>
+                            <Link to='/registration'>Register</Link>
                         </button>
                     </p>
                 </div>
