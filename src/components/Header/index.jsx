@@ -21,8 +21,9 @@ const Header = ({ onLogout, id, login, isLogged }) => {
                     (<div className='header'>
                         <div className='head-box'>
                             <div className='logo-box'>
+                            <Link to={'/'}>
                                 <img src={logo} alt='logo' />
-                                <Link to={`/profile/${id}`} style={{ fontWeight: 'bold' }}>{login ? '@' + login : '...'}</Link>
+                            </Link>
                             </div>
                             <div className='link-box'>
                                 <Link to={`/profile/${id}`}>
@@ -52,8 +53,8 @@ const Header = ({ onLogout, id, login, isLogged }) => {
                     </div>)
                     : (<div className='header'>
                         <div className='head-box'>
-                        <Link to={'/'}>
-                            <img src={logo} alt='logo' />
+                            <Link to={'/'}>
+                                <img src={logo} alt='logo' />
                             </Link>
                             <div className='link-box'>
                                 <Link to={'/login'}>

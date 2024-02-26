@@ -20,6 +20,11 @@ img {
     padding: 0 20px;
 }
 
+.link-box {
+    display: flex;
+    flex-direction: row;
+}
+
 .link-box a {
     text-decoration: none;
     color: black;
