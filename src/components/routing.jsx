@@ -5,6 +5,7 @@ import MainPage from "../pages/MainPage";
 import UserPage from "../pages/UserPage";
 import { CLoginPage } from "../pages/LoginPage";
 import { CRegistrationPage } from "../pages/RegistrationPage";
+import { NotFound } from "../pages/NotFound";
 
 const Routing = ({isLogged}) => {
 
@@ -16,6 +17,7 @@ const Routing = ({isLogged}) => {
                 <Routes>
                         <Route path="/" element={<MainPage />} />
                         <Route path="/:id" element={<UserPage />} />
+                        <Route path="*" element={<NotFound/>} />
                 </Routes>
             </div>
             :
