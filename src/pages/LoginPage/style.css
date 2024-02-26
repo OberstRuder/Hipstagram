@@ -31,6 +31,10 @@ button {
     border-radius: 10px;
 }
 
+.primeBtn, .ordinaryBtn {
+    width: 50%;
+}
+
 .primeBtn a, .ordinaryBtn a {
     text-decoration: none;
     color: white;

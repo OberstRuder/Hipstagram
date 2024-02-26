@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { actionFullRegister } from '../../redux/actions/actionsAuth';
 import { useNavigate } from "react-router";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import './style.css';
 
 const RegistrationPage = ({ onRegister, myId, status }) => {
     const [login, setLogin] = useState('')
@@ -45,44 +46,46 @@ const RegistrationPage = ({ onRegister, myId, status }) => {
     }, [status, myId])
 
     return (
-        <div className='loginBox'>
-            <h3>Registration</h3>
-            <TextField
-                variant="standard"
-                label="Username"
-                value={login}
-                onChange={(e) => setLogin(e.target.value)} />
-            <TextField
-                variant="standard"
-                label="Password"
-                type={showPass ? 'text' : 'password'}
-                onChange={(e) => setPassword(e.target.value)} />
-            <TextField
-                variant="standard"
-                label="Password again"
-                type={showPass ? 'text' : 'password'}
-                onChange={(e) => setPassAgain(e.target.value)} />
-            <div>
+        <div className='reg-cont'>
+            <div className='reg-box'>
+                <h3>Registration</h3>
+                <TextField
+                    variant="standard"
+                    label="Username"
+                    value={login}
+                    onChange={(e) => setLogin(e.target.value)} />
+                <TextField
+                    variant="standard"
+                    label="Password"
+                    type={showPass ? 'text' : 'password'}
+                    onChange={(e) => setPassword(e.target.value)} />
+                <TextField
+                    variant="standard"
+                    label="Password again"
+                    type={showPass ? 'text' : 'password'}
+                    onChange={(e) => setPassAgain(e.target.value)} />
+                <IconButton
+                    style={{ position: 'relative', marginLeft: 'auto', bottom: '35px' }}
+                    aria-label="toggle password visibility"
+                    onClick={() => setShowPass(!showPass)}>
+                    {showPass ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+                <div>
 
-                <div style={{ marginTop: '15px' }}>
-                    <IconButton
-                        style={{ position: 'absolute', right: '120px', top: '233px' }}
-                        aria-label="toggle password visibility"
-                        onClick={() => setShowPass(!showPass)}>
-                        {showPass ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                    <p style={{ color: 'red', fontSize: '16px' }}>{error}</p>
-                    <button
-                        onClick={() => regHandler()}
-                        className={'primeBtn'}>
-                        Create account
-                    </button>
-                    <p>Already have an account? <br />
+                    <div style={{ marginTop: '15px' }}>
+                        <p style={{ color: 'red', fontSize: '16px', position: 'relative', bottom: '30px' }}>{error}</p>
                         <button
-                            className='ordinaryBtn'>
-                            <Link to='/login'>Log in</Link>
+                            onClick={() => regHandler()}
+                            className={'primeBtn'}>
+                            Create account
                         </button>
-                    </p>
+                        <p>Already have an account? <br />
+                            <button
+                                className='ordinaryBtn'>
+                                <Link to='/login'>Log in</Link>
+                            </button>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
