@@ -1,28 +1,28 @@
 import { actionPromise } from "../redux/actions/actionPromise";
 import { gql } from "./getgql";
 
-export const actionLike = (id) =>
+export const querySubscribe = (id, userId, prevFollowing) =>
     actionPromise(
-        'likePost',
+        'subscribe',
         gql(
-            `mutation likePost($like:LikeInput){
-        LikeUpsert( like:$like){
-            _id post{_id owner{_id}}
+            `mutation following($user:UserInput){
+        UserUpsert( user:$user){
+            following{_id}
         }
       }`,
-            { like: { post: { _id: id } } }
+            { user: { _id: id, following: [...(prevFollowing || []), { _id: userId }] } }
         )
     );
 
-export const actionRemoveLike = (id) =>
+export const queryUnSubscribe = (id, prevFollowing) =>
     actionPromise(
-        'removeLike',
+        'unSubscribe',
         gql(
-            `mutation LikeRemove($like:LikeInput){
-          LikeDelete(like:$like){
-              _id post{_id owner{_id}} 
-          }
-      }`,
-            { like: { _id: id } }
+            `mutation unSubscribe($user:UserInput){
+      UserUpsert( user:$user){
+          following{_id}
+      }
+    }`,
+            { user: { _id: id, following: [...prevFollowing] } }
         )
     );
