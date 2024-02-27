@@ -6,6 +6,7 @@ import DefaultAvatar from "../../components/Avatar/DefaultAvatar";
 import { CPreloaded } from "../../components/Uploading/Preloader";
 import { queryPostById } from "../../gql/postGql";
 import { CPostPreview } from '../../components/Post/PostPreview';
+import './style.css';
 
 const MyProfile = ({ myLogin,
     myPosts,
@@ -31,7 +32,7 @@ const MyProfile = ({ myLogin,
             <div className='profile-box'>
                 <div className="avatar">
                     {myAvatar ?
-                        <Avatar url={myAvatar} className='avatarPic' />
+                        <Avatar url={myAvatar} className='avatar-pic' />
                         : <DefaultAvatar />
                     }
                 </div>
@@ -66,14 +67,16 @@ const MyProfile = ({ myLogin,
                 </div>
             </div>
             <CPreloaded promiseName='postByIdUser'>
-                <div className='gallery'>
-                    {(myPosts || []).map((post) => {
-                        return <CPostPreview post={post}
-                            key={post._id + Math.random() * 100}
-                            className='gallery-item'
-                        />
-                    })
-                    }
+                <div className='gallery-cont'>
+                    <div className='gallery'>
+                        {(myPosts || []).map((post) => {
+                            return <CPostPreview post={post}
+                                key={post._id + Math.random() * 100}
+                                className='gallery-item'
+                            />
+                        })
+                        }
+                    </div>
                 </div>
             </CPreloaded>
         </CPreloaded>

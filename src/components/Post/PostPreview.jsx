@@ -6,6 +6,7 @@ import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import {actionGetPostById} from "../../gql/postGql";
 import ChatBubbleOutlinedIcon from '@mui/icons-material/ChatBubbleOutlined';
+import './style.css';
 
 const multiIcon = {
     position: 'absolute',
@@ -41,7 +42,7 @@ const PreviewPost = ({post, getPostById}) => {
                            <FavoriteIcon style={scale}/>
                            {post?.likes?.length}
                        </div>
-                       <div className="gallery-item-likes">
+                       <div className="gallery-item-comments">
                            <ChatBubbleOutlinedIcon style={scale}/>
                            {post?.comments ? post?.comments.length : '0'}
                        </div>

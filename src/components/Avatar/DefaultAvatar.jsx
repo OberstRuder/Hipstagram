@@ -1,7 +1,7 @@
 import React from 'react';
 import defaultAva from '../../materials/default_avatar.png'
 
-const DefaultAvatar = ({className = 'avatarPic'}) => {
+const DefaultAvatar = ({className = 'avatar-pic'}) => {
     return (
         <div>
             <img src={defaultAva}

@@ -2,7 +2,7 @@ import React from 'react';
 import { backendUrl } from "../../gql/backendUrl";
 import def from "../../materials/default_avatar.png";
 
-const Avatar = ({ url, className = 'avatarPic' }) => {
+const Avatar = ({ url, className = 'avatar-pic' }) => {
 
     function handleImageError(e) {
         e.target.onError = null
