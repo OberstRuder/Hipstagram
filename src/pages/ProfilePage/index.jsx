@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import { connect } from "react-redux";
-import { queryUserById } from "../../gql/userGql";
+import { connect } from 'react-redux';
+import { queryUserById } from '../../gql/userGql';
 import { useParams } from 'react-router-dom'
-import { CMyProfile } from "./myProfile";
-import { CUserProfile } from "./userProfile";
+import { CMyProfile } from '../../components/Profile/myProfile'
+import { CUserProfile } from '../../components/Profile/userProfile';
 import { actionClearPromiseByName } from "../../redux/actions/actionPromise";
 import { queryPostById } from "../../gql/postGql";
 

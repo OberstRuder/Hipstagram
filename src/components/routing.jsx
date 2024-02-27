@@ -7,28 +7,28 @@ import { CRegistrationPage } from "../pages/RegistrationPage";
 import { NotFound } from "../pages/NotFound";
 import { CProfile } from "../pages/ProfilePage";
 
-const Routing = ({isLogged}) => {
+const Routing = ({ isLogged }) => {
 
-    return(
+    return (
         <>
-        {
-            isLogged ?
-            <div className="main-cont">
-                <Routes>
-                        <Route path="/" element={<MainPage />} />
-                        <Route path="/profile/:_id" element={<CProfile/>}/>
-                        <Route path="*" element={<NotFound/>} />
-                </Routes>
-            </div>
-            :
-            <div className="main-cont">
-                <Routes>
-                        <Route path="/" element={<CLoginPage />} />
-                        <Route path="/login" element={<CLoginPage />} />
-                        <Route path="/register" element={<CRegistrationPage />} />
-                </Routes>
-            </div>
-        }
+            {
+                isLogged ?
+                    <div className="main-cont">
+                        <Routes>
+                            <Route path="/" element={<MainPage />} />
+                            <Route path="/profile/:_id" element={<CProfile />} />
+                            <Route path="*" element={<NotFound />} />
+                        </Routes>
+                    </div>
+                    :
+                    <div className="main-cont">
+                        <Routes>
+                            <Route path="/" element={<CLoginPage />} />
+                            <Route path="/login" element={<CLoginPage />} />
+                            <Route path="/register" element={<CRegistrationPage />} />
+                        </Routes>
+                    </div>
+            }
         </>
     )
 };
