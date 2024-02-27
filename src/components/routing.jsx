@@ -8,6 +8,8 @@ import { NotFound } from "../pages/NotFound";
 import { CProfile } from "../pages/ProfilePage";
 import { CSearch } from "../pages/SearchPage";
 import { CSettings } from "../pages/SettingsPage"
+import { CFollowings } from "../pages/FollowingsPage";
+import { CFollowers } from "../pages/FolllowersPage";
 
 const Routing = ({ isLogged }) => {
 
@@ -21,6 +23,8 @@ const Routing = ({ isLogged }) => {
                             <Route path="/profile/:_id" element={<CProfile />} />
                             <Route path="/search" element={<CSearch/>}/>
                             <Route path='/settings' element={<CSettings/>}/>
+                            <Route path="/following/:_id" element={<CFollowings/>} />
+                            <Route path="/followers/:_id" element={<CFollowers/>} />
                             <Route path="*" element={<NotFound />} />
                         </Routes>
                     </div>
