@@ -7,6 +7,7 @@ import { CRegistrationPage } from "../pages/RegistrationPage";
 import { NotFound } from "../pages/NotFound";
 import { CProfile } from "../pages/ProfilePage";
 import { CSearch } from "../pages/SearchPage";
+import { CSettings } from "../pages/SettingsPage"
 
 const Routing = ({ isLogged }) => {
 
@@ -19,6 +20,7 @@ const Routing = ({ isLogged }) => {
                             <Route path="/" element={<MainPage />} />
                             <Route path="/profile/:_id" element={<CProfile />} />
                             <Route path="/search" element={<CSearch/>}/>
+                            <Route path='/settings' element={<CSettings/>}/>
                             <Route path="*" element={<NotFound />} />
                         </Routes>
                     </div>
