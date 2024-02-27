@@ -12,6 +12,7 @@ import { CFollowings } from "../pages/FollowingsPage";
 import { CFollowers } from "../pages/FolllowersPage";
 import { CPost } from "../pages/PostPage"
 import { CCreatePost } from "../pages/CreatePostPage";
+import { CShowPosts } from "../pages/FeedPage";
 
 const Routing = ({ isLogged }) => {
 
@@ -29,6 +30,7 @@ const Routing = ({ isLogged }) => {
                             <Route path="/followers/:_id" element={<CFollowers/>} />
                             <Route path='/post/:_id' element={<CPost />} />
                             <Route path='/create' element={<CCreatePost />} />
+                            <Route path='/feed' element={<CShowPosts/>}/>
                             <Route path="*" element={<NotFound />} />
                         </Routes>
                     </div>
