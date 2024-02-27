@@ -8,6 +8,7 @@ import { store } from '../../redux/store'
 import { CDropzoneAvatar } from "../../components/Avatar/AvatarDrop";
 import Avatar from "../../components/Avatar/Avatar";
 import DefaultAvatar from "../../components/Avatar/DefaultAvatar";
+import './style.css';
 
 
 const Settings = ({ onChange, avatar, myId, clearPromise, myAvatar, login, setAvatar, changeLogin }) => {
@@ -38,33 +39,34 @@ const Settings = ({ onChange, avatar, myId, clearPromise, myAvatar, login, setAv
 
     return (
         <>
-            <div>
-                <h3 className='post-text'>Change avatar</h3>
-                <div className='edit-box box-flexible'>
-                    {setOrShowAvatar()}
-                    <button children={isEditing ? 'Cancel' : 'change photo'}
-                        className='primeBtn'
-                        onClick={() => setIsEditing(!isEditing)} />
+            <div className='settings-cont'>
+                <div>
+                    <h3 className='post-text'>Change avatar</h3>
+                    <div className='edit-box'>
+                        {setOrShowAvatar()}
+                        <button children={isEditing ? 'Cancel' : 'change photo'}
+                            className='primeBtn'
+                            onClick={() => setIsEditing(!isEditing)} />
+                    </div>
+                </div>
+                <div >
+                    <h3 className='post-text'>Change login</h3>
+                    <div className='edit-box'>
+                        <TextField
+                            type="text"
+                            placeholder="New Login"
+                            value={newLogin}
+                            onChange={(e) => setNewLogin(e.target.value)}
+                        />
+                        <button
+                            className='primeBtn'
+                            disabled={!newLogin || login === newLogin}
+                            onClick={() => onChange(newLogin)}>
+                            Submit
+                        </button>
+                    </div>
                 </div>
             </div>
-            <div >
-                <h3 className='post-text'>Change login</h3>
-                <div className='edit-box'>
-                    <TextField
-                        type="text"
-                        placeholder="New Login"
-                        value={newLogin}
-                        onChange={(e) => setNewLogin(e.target.value)}
-                    />
-                    <button
-                        className='primeBtn'
-                        disabled={!newLogin || login === newLogin}
-                        onClick={() => onChange(newLogin)}>
-                        Submit
-                    </button>
-                </div>
-            </div>
-
         </>
     );
 };

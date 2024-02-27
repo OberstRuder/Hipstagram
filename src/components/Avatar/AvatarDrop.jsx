@@ -38,7 +38,7 @@ function DropzoneAvatar({ onLoadAvatar }) {
 
     return (
         <>
-            <div {...getRootProps()}>
+            <div className='dropzone' {...getRootProps()}>
                 {selectedFile &&
                     <img src={preview}
                         alt={'preview'}
@@ -51,7 +51,7 @@ function DropzoneAvatar({ onLoadAvatar }) {
             <button onClick={() => onLoadAvatar(selectedFile)}
                 disabled={!selectedFile}
                 className='primeBtn'>
-                submit
+                Submit
             </button>
         </>
 
