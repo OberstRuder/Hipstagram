@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { actionFullGetUsers } from "../../redux/actions/actionGetUsers";
 import { CSearchByLogin } from "../../components/Search/SearchByLogin";
+import './style.css';
 
 const Search = ({ users = [], onGetUsers }) => {
     const [flag, setFlag] = useState(true);
@@ -33,7 +34,9 @@ const Search = ({ users = [], onGetUsers }) => {
     }
     return (
         <>
-            <CSearchByLogin />
+            <div className='search-cont'>
+                <CSearchByLogin />
+            </div>
         </>
     );
 };
