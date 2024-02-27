@@ -1,11 +1,11 @@
 import React from 'react';
 import Carousel from "react-material-ui-carousel";
-import {backendUrl} from "../../gql/backendUrl";
+import { backendUrl } from "../../gql/backendUrl";
 
 export const ImagesSlider = ({ images, className }) => {
 
     return (
-       <div style={{width: '100%'}}>
+        <div style={{ width: '100%' }}>
             <Carousel
                 navButtonsAlwaysVisible={true}
                 swipe={false}
@@ -20,14 +20,14 @@ export const ImagesSlider = ({ images, className }) => {
                 {images.map((item) => {
                     return (
                         <div className='carousel-box'
-                             key={Math.random() * 1000}>
+                            key={Math.random() * 1000}>
                             <img className={className}
                                 src={backendUrl + item.url}
-                                alt={'carousel-item'}/>
+                                alt={'carousel-item'} />
                         </div>
-                       )
+                    )
                 }
-               )}
+                )}
             </Carousel>
         </div>
     );

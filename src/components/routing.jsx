@@ -10,6 +10,7 @@ import { CSearch } from "../pages/SearchPage";
 import { CSettings } from "../pages/SettingsPage"
 import { CFollowings } from "../pages/FollowingsPage";
 import { CFollowers } from "../pages/FolllowersPage";
+import { CPost } from "../pages/PostPage"
 
 const Routing = ({ isLogged }) => {
 
@@ -25,6 +26,7 @@ const Routing = ({ isLogged }) => {
                             <Route path='/settings' element={<CSettings/>}/>
                             <Route path="/following/:_id" element={<CFollowings/>} />
                             <Route path="/followers/:_id" element={<CFollowers/>} />
+                            <Route path='/post/:_id' element={<CPost />} />
                             <Route path="*" element={<NotFound />} />
                         </Routes>
                     </div>

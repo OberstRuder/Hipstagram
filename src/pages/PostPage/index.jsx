@@ -1,24 +1,24 @@
-import React, {useEffect, useState} from 'react';
-import {connect} from "react-redux";
+import React, { useEffect, useState } from 'react';
+import { connect } from "react-redux";
 import Card from "@mui/material/Card"
-import {CardContent, CardMedia, Typography} from "@mui/material";
-import {backendUrl} from "../../gql/backendUrl";
+import { CardContent, CardMedia, Typography } from "@mui/material";
+import { backendUrl } from "../../gql/backendUrl";
 import Avatar from "../../components/Avatar/Avatar";
 import DefaultAvatar from "../../components/Avatar/DefaultAvatar";
-import {Link, useParams} from "react-router-dom";
-import {ImagesSlider} from "./Slider";
-import {CLike} from "../../components/like/Like";
-import {actionGetPostById, queryPostById} from "../../graphql/queryPost";
-import {CPreloaded} from "../../helpers/Preloader";
-import {useNavigate} from "react-router";
-import {queryUserById} from "../../graphql/queryUserById";
+import { Link, useParams } from "react-router-dom";
+import { ImagesSlider } from "../../components/Slider/Slider";
+import { CLike } from "../../components/Like/Like";
+import { actionGetPostById, queryPostById } from "../../gql/postGql";
+import { CPreloaded } from "../../components/Uploading/Preloader";
+import { useNavigate } from "react-router";
+import { queryUserById } from "../../gql/userGql";
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import {actionClearPromiseByName} from "../../redux/actions/actionPromise";
+import { actionClearPromiseByName } from "../../redux/actions/actionPromise";
 import EditIcon from '@mui/icons-material/Edit';
-import {getDate} from "../../helpers/DateFormating";
-import CommentList from "../../components/comments/CommentList";
-import {actionFullAddLike, actionFullRemoveLike} from "../../redux/actions/actionsLike";
+import { getDate } from "../../components/DateFormating";
+import CommentList from "../../components/Comments/CommentList";
+import { actionFullAddLike, actionFullRemoveLike } from "../../redux/actions/actionsLike";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const style = {
@@ -40,8 +40,8 @@ const noHeart = {
     display: 'none'
 }
 
-const Post = ({post, onGetPostById, userId, promise, postsArr = [], getPostsByUserId, myId, onLike, onDeleteLike}) => {
-    const {_id} = useParams()
+const Post = ({ post, onGetPostById, userId, promise, postsArr = [], getPostsByUserId, myId, onLike, onDeleteLike }) => {
+    const { _id } = useParams()
     const [likeClass, setLikeClass] = useState(noHeart)
     let [currentIndex, setCurrentIndex] = useState(postsArr.findIndex((item) => item._id === _id))
 
@@ -59,7 +59,7 @@ const Post = ({post, onGetPostById, userId, promise, postsArr = [], getPostsByUs
 
     useEffect(() => {
         userId && getPostsByUserId(userId)
-        if(postsArr.length) {
+        if (postsArr.length) {
             onGetPostById(postsArr[currentIndex]._id)
         } else {
             getPostsByUserId(post?.owner?._id)
@@ -85,14 +85,14 @@ const Post = ({post, onGetPostById, userId, promise, postsArr = [], getPostsByUs
                             disabled={currentIndex < 1}
                             className='unstyledBtn'
                             onClick={toPrev}>
-                                <ChevronLeftIcon/>
+                            <ChevronLeftIcon />
                         </button>
                         <Card style={style}
-                                id='card'>
+                            id='card'>
                             <div className='modal-image-box'
                                 onDoubleClick={() => doubleLike()}
                             >
-                                <FavoriteIcon style={likeClass}/>
+                                <FavoriteIcon style={likeClass} />
                                 {post?.images.length === 1 ? (
                                     <CardMedia
                                         component="img"
@@ -100,8 +100,8 @@ const Post = ({post, onGetPostById, userId, promise, postsArr = [], getPostsByUs
                                         alt="post-picture"
                                         className='gallery-image'
                                     />) : (
-                                    <ImagesSlider images={post?.images} key={post?._id} className='gallery-image'/>
-                                  )
+                                    <ImagesSlider images={post?.images} key={post?._id} className='gallery-image' />
+                                )
                                 }
                             </div>
                             <div className='modal-info-box'>
@@ -109,14 +109,14 @@ const Post = ({post, onGetPostById, userId, promise, postsArr = [], getPostsByUs
                                     <div className='card-author-box'>
                                         <Link to={`/profile/${post?.owner?._id}`}>
                                             {post?.owner?.avatar === null ? (
-                                                <DefaultAvatar className='small-ava avatarPic'/>
+                                                <DefaultAvatar className='small-ava avatarPic' />
                                             ) : (
-                                                <Avatar url={post?.owner?.avatar?.url} className='small-ava avatarPic'/>
+                                                <Avatar url={post?.owner?.avatar?.url} className='small-ava avatarPic' />
                                             )}
                                             <h3>{'@' + post?.owner.login}</h3>
                                         </Link>
                                     </div>
-                                    <div style={{color: '#959292', fontSize: '18px'}}>
+                                    <div style={{ color: '#959292', fontSize: '18px' }}>
                                         {getDate(post?.createdAt)}
                                     </div>
                                 </header>
@@ -128,19 +128,19 @@ const Post = ({post, onGetPostById, userId, promise, postsArr = [], getPostsByUs
                                     <Typography variant="body2" className='post-text'>
                                         {post?.text}
                                     </Typography>
-                                        <div style={{overflow: 'auto', flexGrow: '1'}}>
-                                                <CommentList comments={post?.comments} postId={post?._id}/>
-                                        </div>
+                                    <div style={{ overflow: 'auto', flexGrow: '1' }}>
+                                        <CommentList comments={post?.comments} postId={post?._id} />
+                                    </div>
                                 </CardContent>
 
                                 <div className="card-bottom">
-                                    <CLike post={post} postId={post?._id} likeClass='like-brief-info'/>
+                                    <CLike post={post} postId={post?._id} likeClass='like-brief-info' />
                                     {
                                         post?.owner?._id === myId &&
                                         <Link
                                             onClick={() => onGetPostById(_id, 'editPost')}
                                             to='/create'>
-                                            <EditIcon/>
+                                            <EditIcon />
                                         </Link>
                                     }
                                 </div>
@@ -150,7 +150,7 @@ const Post = ({post, onGetPostById, userId, promise, postsArr = [], getPostsByUs
                             disabled={currentIndex > postsArr.length - 2}
                             className='unstyledBtn'
                             onClick={toNext}>
-                                <ChevronRightIcon />
+                            <ChevronRightIcon />
                         </button>
                     </div>
                 ) : null
