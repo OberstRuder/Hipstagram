@@ -15,7 +15,7 @@ const Dropzone = ({ drag = false, setDrag, actionOnUpload, multiply }) => {
         actionOnUpload(e, file)
     }
     return (
-        <div style={{ width: '60%', margin: '20px auto' }}>
+        <div style={{ width: '60%', margin: '20px auto',height: '300px', border: '1px dotted black', justifyContent: 'center', display: 'flex', alignItems: 'center' }}>
             {drag
                 ? <div
                     onDragStart={(e) => dragStartHandler(e)}

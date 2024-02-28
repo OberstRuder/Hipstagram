@@ -1,11 +1,11 @@
-import {useNavigate} from "react-router";
-import {connect} from "react-redux";
-import {actionFullUploadPost} from "../../redux/actions/actionsPost";
-import {actionClearPromise} from '../../redux/actions/actionPromise'
-import {CFileUploader} from "../../components/Uploading/FileUploader";
-import {TextField} from "@mui/material";
-import React, {useEffect, useMemo, useState} from "react";
-import {DndContext, closestCenter, DragOverlay} from "@dnd-kit/core";
+import { useNavigate } from "react-router";
+import { connect } from "react-redux";
+import { actionFullUploadPost } from "../../redux/actions/actionsPost";
+import { actionClearPromise } from '../../redux/actions/actionPromise'
+import { CFileUploader } from "../../components/Uploading/FileUploader";
+import { TextField } from "@mui/material";
+import React, { useEffect, useMemo, useState } from "react";
+import { DndContext, closestCenter, DragOverlay } from "@dnd-kit/core";
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import {
     arrayMove,
@@ -14,9 +14,10 @@ import {
     useSortable
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import {backendUrl} from "../../gql/backendUrl";
-import {Photo} from "../../components/Uploading/Photo";
-import {actionGetPostById} from "../../gql/postGql";
+import { backendUrl } from "../../gql/backendUrl";
+import { Photo } from "../../components/Uploading/Photo";
+import { actionGetPostById } from "../../gql/postGql";
+import './style.css';
 
 export function SortableItem(props) {
     const {
@@ -42,57 +43,57 @@ export function SortableItem(props) {
             {...attributes}
             {...listeners}
         >
-            <img src={backendUrl + props.url} alt={'preview-pic'} className='preview-img'/>
+            <img src={backendUrl + props.url} alt={'preview-pic'} className='preview-img' />
         </div>
     );
 }
 
- function PreviewPics({myId, uploadFile, onUpload, uploadPost, onDelete, onGetPostById, editPost}) {
+function PreviewPics({ myId, uploadFile, onUpload, uploadPost, onDelete, onGetPostById, editPost }) {
 
-     const [activeId, setActiveId] = useState(null);
-     const [photos, setPhotos] = useState([]);
-     const [title, setTitle] = useState('');
-     const [text, setText] = useState('')
+    const [activeId, setActiveId] = useState(null);
+    const [photos, setPhotos] = useState([]);
+    const [title, setTitle] = useState('');
+    const [text, setText] = useState('')
 
-     const navigate = useNavigate()
+    const navigate = useNavigate()
 
-     useEffect(() => {
-         if (uploadFile?.status === 'RESOLVED') {
-            try{
-               setPhotos([...photos, ...uploadFile?.payload]);
+    useEffect(() => {
+        if (uploadFile?.status === 'RESOLVED') {
+            try {
+                setPhotos([...photos, ...uploadFile?.payload]);
             } catch (e) {
                 alert(e)
             }
-         }
-         if(uploadFile === null){
-             setPhotos([])
-         }
+        }
+        if (uploadFile === null) {
+            setPhotos([])
+        }
 
-     }, [uploadFile]);
+    }, [uploadFile]);
 
     useEffect(() => {
-        if(uploadPost) {
-            if(myId && uploadPost?.status === 'RESOLVED') {
+        if (uploadPost) {
+            if (myId && uploadPost?.status === 'RESOLVED') {
                 navigate(`/profile/${myId}`)
             }
         }
     }, [uploadPost])
 
-     useEffect(() => {
-         if (editPost?.status === 'RESOLVED') {
-             setPhotos(editPost?.payload?.images);
-             setTitle(editPost?.payload?.title)
-             setText(editPost?.payload?.text)
-         }
-     }, [editPost]);
+    useEffect(() => {
+        if (editPost?.status === 'RESOLVED') {
+            setPhotos(editPost?.payload?.images);
+            setTitle(editPost?.payload?.title)
+            setText(editPost?.payload?.text)
+        }
+    }, [editPost]);
 
-     const deleteImage = (_id) => {
-         setPhotos(photos.filter((item) => item._id !== _id))
-     }
+    const deleteImage = (_id) => {
+        setPhotos(photos.filter((item) => item._id !== _id))
+    }
 
-     function uploadHandler() {
-         onUpload(title, text, photos, editPost?.payload?._id)
-     }
+    function uploadHandler() {
+        onUpload(title, text, photos, editPost?.payload?._id)
+    }
 
     const itemIds = useMemo(() => photos.map((item) => item.id), [photos]);
 
@@ -117,72 +118,72 @@ export function SortableItem(props) {
     }
 
     return (
-       <div style={{width: '90%'}}>
-           <DndContext
-               collisionDetection={closestCenter}
-               onDragStart={handleDragStart}
-               onDragEnd={handleDragEnd}
-               onDragCancel={handleDragCancel}>
+        <div className="create-post-cont">
+            <DndContext
+                collisionDetection={closestCenter}
+                onDragStart={handleDragStart}
+                onDragEnd={handleDragEnd}
+                onDragCancel={handleDragCancel}>
 
-               <SortableContext items={itemIds} strategy={rectSortingStrategy}>
-                   <div className={'preview-box'}>
-                       {photos.map((item) => (
-                           <button
-                               className='ordinaryBtn'
-                               key={Math.random() * 1000}
-                               onClick={() => deleteImage(item._id)}>
-                                   <HighlightOffIcon className= 'delete-icon'/>
-                                   <SortableItem
-                                       id={item._id}
-                                       url={item.url}/>
-                           </button>
-                       ))}
-                   </div>
-               </SortableContext>
+                <SortableContext items={itemIds} strategy={rectSortingStrategy}>
+                    <div className={'preview-box'}>
+                        {photos.map((item) => (
+                            <button
+                                className='ordinaryBtn'
+                                key={Math.random() * 1000}
+                                onClick={() => deleteImage(item._id)}>
+                                <HighlightOffIcon className='delete-icon' />
+                                <SortableItem
+                                    id={item._id}
+                                    url={item.url} />
+                            </button>
+                        ))}
+                    </div>
+                </SortableContext>
 
-               <DragOverlay adjustScale={true}>
-                   {photos && activeId ? (
-                       <Photo
-                           src={backendUrl + photos.find(item => item._id === activeId).url}
-                           index={photos.indexOf(activeId)} />
-                   ) : null}
-               </DragOverlay>
-           </DndContext>
-           <div>
-               <CFileUploader multiply={true}/>
-               <div className="input-area">
-                   <div className='input-box'>
-                       <TextField
-                           variant="standard"
-                           value={title}
-                           onChange={(e) => setTitle(e.target.value)}
-                           label="Title"
-                       />
-                       <TextField
-                           variant="standard"
-                           value={text}
-                           onChange={(e) => setText(e.target.value)}
-                           label="Text"
-                       />
-                       <div className='profile-buttons'>
-                           <button
-                               onClick={() => {
-                                   uploadHandler()
-                               }}
-                               disabled={photos?.length === 0}
-                               className='primeBtn'>
-                               Send
-                           </button>
-                           <button className='ordinaryBtn'
-                                   onClick={() => navigate(-1)}>
-                                    go back
-                                   </button>
-                       </div>
-                   </div>
-               </div>
+                <DragOverlay adjustScale={true}>
+                    {photos && activeId ? (
+                        <Photo
+                            src={backendUrl + photos.find(item => item._id === activeId).url}
+                            index={photos.indexOf(activeId)} />
+                    ) : null}
+                </DragOverlay>
+            </DndContext>
+            <div className="create-post-box">
+                <CFileUploader multiply={true} />
+                <div className="input-area">
+                    <div className='input-box'>
+                        <TextField
+                            variant="standard"
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                            label="Title"
+                        />
+                        <TextField
+                            variant="standard"
+                            value={text}
+                            onChange={(e) => setText(e.target.value)}
+                            label="Text"
+                        />
+                        <div className='create-post-buttons'>
+                            <button
+                                onClick={() => {
+                                    uploadHandler()
+                                }}
+                                disabled={photos?.length === 0}
+                                className='primeBtn'>
+                                Send
+                            </button>
+                            <button className='primeBtn'
+                                onClick={() => navigate(-1)}>
+                                Go back
+                            </button>
+                        </div>
+                    </div>
+                </div>
 
-           </div>
-       </div>
+            </div>
+        </div>
     );
 }
 

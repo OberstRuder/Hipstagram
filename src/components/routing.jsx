@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Route, Routes } from "react-router-dom";
-import MainPage from "../pages/MainPage";
 import { CLoginPage } from "../pages/LoginPage";
 import { CRegistrationPage } from "../pages/RegistrationPage";
 import { NotFound } from "../pages/NotFound";
@@ -22,7 +21,7 @@ const Routing = ({ isLogged }) => {
                 isLogged ?
                     <div className="main-cont">
                         <Routes>
-                            <Route path="/" element={<MainPage />} />
+                            <Route path="/" element={<CShowPosts/>} />
                             <Route path="/profile/:_id" element={<CProfile />} />
                             <Route path="/search" element={<CSearch/>}/>
                             <Route path='/settings' element={<CSettings/>}/>
