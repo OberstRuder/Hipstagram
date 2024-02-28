@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import loading from '../../materials/loading.gif'
 import React from "react";
-import ghost from '../../materials/loading.gif'
+import dino from '../../materials/dino.gif'
 
 const Preloaded = ({ promiseName, promiseState, children }) => (
     <>
@@ -11,7 +11,7 @@ const Preloaded = ({ promiseName, promiseState, children }) => (
             <div>
                 <h1 style={{color: 'red'}}>Error loading :(</h1>
                 <h4>Please, check your internet connection</h4>
-                <img src={ghost} alt='error-gif'/>
+                <img src={dino} alt='error-gif'/>
             </div>
         ) : (
             <img style={{display: 'block', margin: '0 auto', marginBottom: '200px', padding: '10px', width: '500px', height: '350px'}}
