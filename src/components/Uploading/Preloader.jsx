@@ -14,7 +14,7 @@ const Preloaded = ({ promiseName, promiseState, children }) => (
                 <img src={ghost} alt='error-gif'/>
             </div>
         ) : (
-            <img style={{display: 'block', margin: '0 auto', marginBottom: '200px', padding: '10px'}}
+            <img style={{display: 'block', margin: '0 auto', marginBottom: '200px', padding: '10px', width: '500px', height: '350px'}}
                  src={loading} width="400px" height="auto" alt='loading-gif'/>
         )}
     </>
