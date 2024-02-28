@@ -27,7 +27,7 @@ const LoginPage = ({ onLogin, isLogged, promise, myId }) => {
                     store.dispatch(actionAuthLogin(localStorage.authToken))
                     store.dispatch(actionFullGetAllPosts())
                 }
-                navigate('/profile/' + myId);
+                navigate('/feed/');
                 setErrorMessage('')
             } else {
                 setErrorMessage('Login and password cannot be empty')
