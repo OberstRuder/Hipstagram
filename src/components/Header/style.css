@@ -32,5 +32,10 @@ img {
     text-transform: uppercase;
     align-items: center;
     display: flex;
+    transition: 0.01s;
+}
+
+.link-box a:hover {
+    transform: translateY(-3px)
 }
 
