@@ -19,11 +19,12 @@ const Comment = ({ text, createdAt, owner }) => {
                         <h3>{'@' + owner.login}</h3>
                     </Link>
                 </div>
-                <div style={{ color: '#959292', fontSize: '18px' }}>
+                <div style={{ color: '#959292', fontSize: '15px', textAlign: 'right' }}>
                     {getDate(createdAt)}
                 </div>
             </div>
-            <p style={{ textAlign: 'center' }}>{text}</p>
+            <p style={{ fontSize: '18px' }}>{text}</p>
+            <hr />
         </div>
     );
 };

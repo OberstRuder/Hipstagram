@@ -5,7 +5,6 @@ import { actionFullComment } from "../../redux/actions/actionComments";
 
 const NewComment = ({ postId, sendComment, promise }) => {
     const [text, setText] = useState('')
-    // console.log(postId)
     return (
         <div className='flexbox'>
             <TextField

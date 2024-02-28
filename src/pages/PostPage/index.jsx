@@ -20,6 +20,7 @@ import { getDate } from "../../components/DateFormating";
 import CommentList from "../../components/Comments/CommentList";
 import { actionFullAddLike, actionFullRemoveLike } from "../../redux/actions/actionsLike";
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import './style.css';
 
 const style = {
     flexDirection: 'unset',
