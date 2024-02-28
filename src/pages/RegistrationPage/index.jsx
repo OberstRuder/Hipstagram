@@ -81,7 +81,7 @@ const RegistrationPage = ({ onRegister, myId, status }) => {
                         </button>
                         <p>Already have an account? <br />
                             <button
-                                className='ordinaryBtn'>
+                                className='primeBtn'>
                                 <Link to='/login'>Log in</Link>
                             </button>
                         </p>

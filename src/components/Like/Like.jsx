@@ -44,7 +44,7 @@ const Like = ({ post = [], onLike, onDeleteLike, myId, likeClass, likeInfoClass 
                                 <span>LIKED BY</span>
                                 <Link to={`/profile/${likes[0].owner._id}`}
                                 >
-                                    <b style={{ padding: '0 5px', fontSize: '16px' }}>{likes[0].owner.login}</b>
+                                    <b style={{ padding: '0 5px', fontSize: '13px' }}>{likes[0].owner.login}</b>
                                 </Link>
                                 {likes.length > 1 &&
                                     <span>{`and ${likes.length - 1} others`}</span>}

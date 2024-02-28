@@ -19,7 +19,7 @@ const LoginPage = ({ onLogin, isLogged, promise, myId }) => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        if (promise && isLogged) {
+        if (promise) {
             if (login && password) {
                 isLogged = localStorage.authToken
                 if (localStorage.authToken) {
@@ -32,13 +32,12 @@ const LoginPage = ({ onLogin, isLogged, promise, myId }) => {
             } else {
                 setErrorMessage('Login and password cannot be empty')
             }
-        }
-        if (promise) {
+    
             if (promise.status === 'RESOLVED' && !promise.payload) {
                 setErrorMessage('Please, enter correct login and password')
             }
         }
-    }, [isLogged, navigate, promise])
+    }, [isLogged, navigate, promise]);
 
     return (
         <div className='login-cont'>
@@ -65,11 +64,12 @@ const LoginPage = ({ onLogin, isLogged, promise, myId }) => {
                     {<p style={{ color: 'red', fontSize: '16px', position: 'relative', bottom: '30px' }}>{errorMessage}</p>}
                     <button
                         className='primeBtn'
-                        onClick={() => onLogin(login, password)}>
-                        <Link to={'/login'}>Log in</Link>
+                        onClick={() => onLogin(login, password)}
+                        disabled={!login || !password}>
+                        {!login || !password ? <Link>Log in</Link> : <Link to={'/feed'}>Log in</Link>}
                     </button>
                     <p>Don't have an account? <br />
-                        <button className='ordinaryBtn'>
+                        <button className='primeBtn'>
                             <Link to='/register'>Register</Link>
                         </button>
                     </p>

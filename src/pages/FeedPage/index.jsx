@@ -36,7 +36,7 @@ const ShowPosts = ({ posts = [], getPosts }) => {
     };
 
     return (
-        <div style={{ width: '50%', margin: 'auto' }} className='feed-cont' >
+        <div style={{ width: '50%', margin: 'auto', textAlign: 'center' }} className='feed-cont' >
             {posts.length ?
                 (posts || []).map((post) => {
                     return <CFeedPost key={post._id + Math.random() * 100} post={post} className={'card'} />;
