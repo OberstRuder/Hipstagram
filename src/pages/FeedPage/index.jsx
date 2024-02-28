@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { actionFullGetAllPosts } from "../../redux/actions/actionsPost";
 import { CFeedPost } from "../../components/Feed/FeedPost";
+import './style.css';
 
 const ShowPosts = ({ posts = [], getPosts }) => {
     const [flag, setFlag] = useState(true);
@@ -35,8 +36,7 @@ const ShowPosts = ({ posts = [], getPosts }) => {
     };
 
     return (
-        <div
-            style={{ width: '50%' }}>
+        <div style={{ width: '50%', margin: 'auto' }} className='feed-cont' >
             {posts.length ?
                 (posts || []).map((post) => {
                     return <CFeedPost key={post._id + Math.random() * 100} post={post} className={'card'} />;

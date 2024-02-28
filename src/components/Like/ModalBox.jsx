@@ -26,7 +26,7 @@ const ModalBox = ({ likes, comments, myId, children, postId }) => {
     return (
         <>
             <button
-                style={{ width: '100%' }}
+                style={{ width: '90%' }}
                 onClick={() => setOpen(true)}
                 className='unstyledBtn'>
                 {children}

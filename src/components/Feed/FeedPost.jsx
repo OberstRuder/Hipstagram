@@ -20,9 +20,9 @@ const FeedPost = ({ post = [] }) => {
             {post?.images?.[0]?.url ?
                 (
                     <Card sx={{ maxWidth: 345 }}
-                        style={{ boxShadow: '1px 2px 4px #0000008c', marginBottom: '10px', paddingBottom: '10px', height: '730px' }}
+                        style={{ boxShadow: '1px 2px 4px #0000008c', margin: 'auto', marginTop: '20px', marginBottom: '20px' }}
                     >
-                        <header className='card-header'>
+                        <header className='card-header' style={{padding: '20px', paddingBottom: '0' }}>
                             <div className='card-author-box'>
                                 <Link to={`/profile/${post?.owner?._id}`}>
                                     {post?.owner?.avatar === null ? (
@@ -38,7 +38,7 @@ const FeedPost = ({ post = [] }) => {
                         </header>
 
                         <CardContent>
-                            <div>
+                            <div className='card-cont'>
                                 {post?.images.length === 1 ? (
                                     <img
                                         height="580"
@@ -52,14 +52,6 @@ const FeedPost = ({ post = [] }) => {
 
                                 <CLike post={post} postId={post?._id} likeClass='feed-post-like-box' likeInfoClass='feed-post-like-info' />
                             </div>
-                            <Typography
-                                style={{ fontSize: '18px', textAlignLast: 'start' }}>
-                                {post?.title && <span style={{
-                                    fontWeight: '600',
-                                    marginLeft: '15px'
-                                }}>{'@' + post?.owner.login + ':  '}</span>}
-                                {post?.title.length > 50 ? post?.title.slice(0, 50) + '...' : post?.title}
-                            </Typography>
                             {post?.comments ?
                                 <ModalBox comments={post?.comments} postId={post?._id}>
                                     <ChatBubbleOutlineOutlinedIcon style={{ position: 'relative', top: '5px' }} />

@@ -56,6 +56,20 @@ body {
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+.feed-post-img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+.card-cont .unstyledBtn {
+  width: 100%;
+  background-color: white;
+  color: black;
+  display: flex;
+  font-size: 13px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
