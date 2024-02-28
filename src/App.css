@@ -79,6 +79,14 @@ body {
   display: contents;
 }
 
+.primeBtn {
+  transition: 0.1s;
+}
+
+.primeBtn:hover {
+  transform: scale(1.03);
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

@@ -34,10 +34,3 @@ img {
     display: flex;
 }
 
-.primeBtn {
-    transition: 0.1s;
-}
-
-.primeBtn:hover {
-    transform: scale(1.03);
-}
