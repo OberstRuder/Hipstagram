@@ -13,7 +13,8 @@ const multiIcon = {
     position: 'absolute',
     top: '5%',
     right: '5%',
-    transform: 'scale(1.4)'
+    transform: 'scale(1.4)',
+    color: 'white'
 };
 
 const scale = {
