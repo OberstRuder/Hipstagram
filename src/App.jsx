@@ -9,7 +9,7 @@ import { store } from './redux/store';
 
 function App() {
 
-  if(localStorage.authToken) {
+  if (localStorage.authToken) {
     store.dispatch(actionAboutMe())
     store.dispatch(actionAuthLogin(localStorage.authToken))
     store.dispatch(actionFullGetAllPosts())

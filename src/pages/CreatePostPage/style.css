@@ -25,3 +25,11 @@
 .primeBtn {
     margin-bottom: 10px;
 }
+
+.create-post-box .drop-area {
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
